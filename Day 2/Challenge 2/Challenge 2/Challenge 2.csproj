@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD7946C3-A2C6-48A5-A3AA-CD45C9DA267C}</ProjectGuid>
+    <ProjectGuid>{78EFF3CD-85D9-4F0E-80C8-16311E6D9A10}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Challenge1</RootNamespace>
-    <AssemblyName>Challenge1</AssemblyName>
+    <RootNamespace>Challenge_2</RootNamespace>
+    <AssemblyName>Challenge 2</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Rescources\input.txt">
+    <Content Include="Resources\input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

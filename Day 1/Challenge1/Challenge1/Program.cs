@@ -11,7 +11,7 @@ namespace Challenge1
     {
         static void Main(string[] args)
         {
-            string[] preNumbers = File.ReadAllLines(@"C:\Users\cdabr\Documents\GitHub\Advent-of-code-2020\Day 1\Challenge1\Challenge1\Rescources\num.txt");
+            string[] preNumbers = File.ReadAllLines(@"Rescources\input.txt");
             int[] numbers = new int[preNumbers.Length];
             for (int i = 0; i < preNumbers.Length; i++)
             {
