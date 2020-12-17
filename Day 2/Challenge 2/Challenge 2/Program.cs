@@ -12,19 +12,29 @@ namespace Challenge_2
         static void Main(string[] args)
         {
             string[] lines = File.ReadAllLines(@"Resources\input.txt");
-            string[] result = new string[lines.Length*3];
-            int locationInResult = 0;
+            List<magicChar> result = new List<magicChar>();
+            //int locationInResult = 0;
             for (int i = 0; i < lines.Length; i++)
             {
-                foreach (string item in lines[i].Split(' '))
-                {
-                    result[locationInResult] = item.Trim();
-                    locationInResult++;
-                }
+                string[] arrayFromLine = lines[i].Split(' ');
+                result.Add(new magicChar(arrayFromLine[0], arrayFromLine[1], arrayFromLine[2]));
+                //locationInResult++;
             }
-            for (int i = 0; i < result.Length; i++)
+
+            foreach (magicChar item in result)
             {
-                Console.WriteLine(result[i]);
+                /*Console.Write(item.getLowest());
+                Console.WriteLine(", " + item.getHighest());
+                Console.WriteLine(item.getChar());
+                Console.WriteLine(item.getPass());
+                */
+                if (!item.isAllowed())
+                {
+                    Console.Write(item.getLowest());
+                    Console.WriteLine(", " + item.getHighest());
+                    Console.WriteLine(item.getChar());
+                    Console.WriteLine(item.getPass());
+                }
             }
             Console.ReadLine();
         }
@@ -35,11 +45,52 @@ namespace Challenge_2
         int lowestNumber;
         int highestNumber;
         char desiredCharecter;
-        char[] password;
+        string password;
 
         public magicChar(string range, string letter, string password)
         {
-            this.password = password.ToCharArray();
+            this.password = password;
+            string[] rangeSTR = range.Split('-');
+            lowestNumber = Convert.ToInt32(rangeSTR[0]);
+            highestNumber = Convert.ToInt32(rangeSTR[1]);
+            desiredCharecter = letter.ToCharArray()[0];
+        }
+        
+        public int getLowest()
+        {
+            return lowestNumber;
+        }
+        public int getHighest()
+        {
+            return highestNumber;
+        }
+        public string getPass()
+        {
+            return Convert.ToString(password);
+        }
+        public char getChar()
+        {
+            return desiredCharecter;
+        }
+
+        public bool isAllowed()
+        {
+            int amountOfDesiredLetter = 0;
+            foreach (char item in password)
+            {
+                if (item == desiredCharecter)
+                {
+                    amountOfDesiredLetter++;
+                }
+            }
+            if (amountOfDesiredLetter > lowestNumber && amountOfDesiredLetter < highestNumber)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
