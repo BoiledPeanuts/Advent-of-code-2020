@@ -18,7 +18,7 @@ namespace Challenge1
                 numbers[i] = Convert.ToInt32(preNumbers[i]);
                 Console.WriteLine(numbers[i]);
             }
-            //-------------------------------------------------------------
+
             Part1(numbers);
             Console.WriteLine("Press enter to continue to part 2");
             Console.ReadLine();

@@ -13,14 +13,35 @@ namespace Challenge_2
         {
             string[] lines = File.ReadAllLines(@"Resources\input.txt");
             List<magicChar> result = new List<magicChar>();
-            //int locationInResult = 0;
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] arrayFromLine = lines[i].Split(' ');
                 result.Add(new magicChar(arrayFromLine[0], arrayFromLine[1], arrayFromLine[2]));
-                //locationInResult++;
             }
 
+            Part1(result);
+            Console.WriteLine("Press enter to continue to part 2");
+            Console.ReadLine();
+            Console.Clear();
+            Part2(result);
+            Console.ReadLine();
+        }
+        public static void Part2(List<magicChar> result)
+        {
+            int amountOfValidPasswords = 0;
+            foreach (magicChar item in result)
+            {
+                if (item.getPass()[item.getLowest()-1] == item.getChar() && item.getPass()[item.getHighest()-1] != item.getChar())
+                {
+                    amountOfValidPasswords++;
+                }
+            }
+            Console.WriteLine(amountOfValidPasswords);
+        }
+        public static void Part1(List<magicChar> result)
+        {
+            
+            int numberOfValidPasswords = 0;
             foreach (magicChar item in result)
             {
                 /*Console.Write(item.getLowest());
@@ -28,15 +49,19 @@ namespace Challenge_2
                 Console.WriteLine(item.getChar());
                 Console.WriteLine(item.getPass());
                 */
-                if (!item.isAllowed())
+
+                if (item.isAllowed())
                 {
+                    /*
                     Console.Write(item.getLowest());
                     Console.WriteLine(", " + item.getHighest());
                     Console.WriteLine(item.getChar());
                     Console.WriteLine(item.getPass());
+                    */
+                    numberOfValidPasswords++;
                 }
             }
-            Console.ReadLine();
+            Console.WriteLine(numberOfValidPasswords);
         }
     }
 
@@ -83,7 +108,7 @@ namespace Challenge_2
                     amountOfDesiredLetter++;
                 }
             }
-            if (amountOfDesiredLetter > lowestNumber && amountOfDesiredLetter < highestNumber)
+            if (amountOfDesiredLetter >= lowestNumber && amountOfDesiredLetter <= highestNumber)
             {
                 return true;
             }
